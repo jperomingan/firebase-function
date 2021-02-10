@@ -1,5 +1,3 @@
-const { firebaseConfig } = require("firebase-functions");
-
 const authSwitchLinks = document.querySelectorAll('.switch');
 const authModals = document.querySelectorAll('.auth .modal');
 const authWrapper = document.querySelector('.auth');
