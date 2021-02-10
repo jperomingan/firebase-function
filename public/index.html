@@ -3,11 +3,37 @@
   <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Tutoria; Requests</title>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <title>Tutorial Requests</title>
+        <!-- stylesheets -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
+
+        <!-- auth modals -->
+        <div class="auth open">
+            <div class="modal active">
+                <h2>Login</h2>
+                <form class="login">
+                    <input type="text" name="email" placeholder="Email">
+                    <input type="password" name="password" placeholder="Password">
+                    <button>Login</button>
+                    <p class="error"></p>
+                </form>
+                <div>No account? <a class="switch">Register instead</a></div>
+            </div>
+            <div class="modal">
+                <h2>Register</h2>
+                <form class="register">
+                    <input type="text" name="email" placeholder="Email">
+                    <input type="password" name="password" placeholder="Password">
+                    <button>Register</button>
+                    <p class="error"></p>
+                </form>
+                <div>Got an account? <a class="switch">Login instead</a></div>
+            </div>
+        </div>
+
         <!-- new request modal -->
         <div class="new-request">
             <div class="modal">
@@ -38,6 +64,7 @@
                         </div>
                     </li>
                 </ul>
+                <button class="call">Say Hello</button>
         </section>
 
         <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -48,7 +75,10 @@
         <script src="/__/firebase/8.2.6/firebase-functions.js"></script>
         <!-- Initialize Firebase -->
         <script src="/__/firebase/init.js"></script>
+        <!-- To automatically connect the Firebase SDKs to running emulators -->
+        <!-- <script src="/__/firebase/init.js?useEmulator=true"></script> -->
 
         <script src="js/app.js"></script>
+        <script src="js/auth.js"></script>
    </body>
 </html>
