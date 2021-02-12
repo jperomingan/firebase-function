@@ -1,12 +1,28 @@
-const { default: firebase } = require("firebase");
+var app = new Vue({
+    el: '#app',
+    data: {
+      request: []
+    },
+    methods: {
+      upvoteRequest(id){
+        const upvote = firebase.functions().httpsCallable("upvote");
+        upvote({ id })
+        .catch(error => {
+            console.log(error.message);
+        });
+      }
+    },
+    mounted(){
+        const ref = firebase.firestore().collection('requests').orderBy("upvotes", "desc");;
 
-const ref = firebase.firestore().collection('requests');
+        ref.onSnapshot(snapshot => {
+            console.log(snapshot);
+            let requests = [];
+            snapshot.forEach(doc => {
+                requests.push({...doc.data(), id: doc.id})
+            });
+            this.requests = requests;
+        });
+      }
+  });
 
-ref.onSnapshot(snapshot => {
-    console.log(snapshot);
-    let requests = [];
-    snapshot.forEach(doc => {
-        requests.push({...doc.data(), id: doc.id})
-    });
-    console.log(requests);
-})
